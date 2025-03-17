@@ -27,7 +27,9 @@
                     <td th:text="${p.dateNaissance}"></td>
                     <td th:text="${p.malade}"></td>
                     <td th:text="${p.score}"></td>
-
+                    <td>
+                        <a th:herf="@{delete(id=${p.id})}" class="btn btn-danger">Delete</a>
+                    </td>
                 </tr>
                 </thead>
             </table>
