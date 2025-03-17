@@ -39,6 +39,11 @@ layout:decorate="template1"
 
                            class="btn btn-danger"><i class="bi bi-trash"></i></a>
                     </td>
+                    <td>
+                        <a th:href="@{/editPatient(id=${p.id},keyword=${keyword},page=${currentPage})}"
+
+                           class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                    </td>
                 </tr>
                 </thead>
             </table>
