@@ -10,9 +10,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 import java.util.Date;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.example.hopital")
+
 public class HopitalApplication  implements CommandLineRunner {
 	@Autowired
 	private PatientRepository patientRepository;
@@ -28,8 +30,8 @@ public class HopitalApplication  implements CommandLineRunner {
         //patientRepository.save(new Patient(null,"najat",new Date(),true,10));
 
 	}
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+ @Bean
+PasswordEncoder passwordEncoder(){
+	return new BCryptPasswordEncoder();
+}
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="template1"
+layout:decorate="~{template1}"
 >
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,7 @@ layout:decorate="template1"
             <div class="card shadow-lg">
 
                 <div class="card-body">
-                    <form method="post" th:action="@{/save(page=${page}, keyword=${keyword})}">
+                    <form method="post" th:action="@{/admin/save(page=${page}, keyword=${keyword})}">
                         <div class="mb-3">
                             <label class="form-label">ID</label>
                             <label th:text="${patient.id}"></label>
