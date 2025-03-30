@@ -30,7 +30,7 @@ return new InMemoryUserDetailsManager(User.withUsername("user1").password(passwo
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)throws Exception{
-        httpSecurity.formLogin(form->form.loginPage("/login").permitAll())
+        httpSecurity.formLogin(form->form.loginPage("/login").defaultSuccessUrl("/").permitAll())
                 .authorizeHttpRequests(ar->ar.requestMatchers("/admin/**").hasRole("ADMIN"))
                 .authorizeHttpRequests(ar->ar.requestMatchers("/user/**").hasRole("USER"))
                 .authorizeHttpRequests(ar->ar.requestMatchers("/webjars/**").permitAll())
