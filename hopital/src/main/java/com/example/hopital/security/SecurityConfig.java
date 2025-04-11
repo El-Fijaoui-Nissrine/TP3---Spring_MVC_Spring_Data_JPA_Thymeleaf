@@ -1,5 +1,6 @@
 package com.example.hopital.security;
 
+import com.example.hopital.security.service.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,7 +23,9 @@ import javax.sql.DataSource;
 public class SecurityConfig {
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Bean
+    @Autowired
+    private UserDetailServiceImpl userDetailService;
+   // @Bean
     public JdbcUserDetailsManager jdbcUserDetailsManager(DataSource dataSource){
         return new JdbcUserDetailsManager(dataSource);
     }
@@ -41,10 +44,11 @@ return new InMemoryUserDetailsManager(User.withUsername("user1").password(passwo
                 .authorizeHttpRequests(ar->ar.requestMatchers("/admin/**").hasRole("ADMIN"))
                 .authorizeHttpRequests(ar->ar.requestMatchers("/user/**").hasRole("USER"))
                 .authorizeHttpRequests(ar->ar.requestMatchers("/webjars/**").permitAll())
-
+                .userDetailsService(userDetailService)
                 .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
                 .exceptionHandling(ex -> ex
-                        .accessDeniedPage("/notAuthorized") // Page d'accès refusé personnalisée
+                        .accessDeniedPage("/notAuthorized")// Page d'accès refusé personnalisée
+
                 );
         return  httpSecurity.build();
 

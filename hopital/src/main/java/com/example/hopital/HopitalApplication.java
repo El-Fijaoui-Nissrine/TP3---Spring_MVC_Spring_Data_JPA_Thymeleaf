@@ -2,6 +2,8 @@ package com.example.hopital;
 
 import com.example.hopital.entities.Patient;
 import com.example.hopital.repository.PatientRepository;
+import com.example.hopital.security.service.AccountService;
+import com.example.hopital.security.service.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,7 +35,7 @@ public class HopitalApplication  implements CommandLineRunner {
         //patientRepository.save(new Patient(null,"najat",new Date(),true,10));
 
 	}
-	@Bean
+	//@Bean
 	CommandLineRunner commandLineRunner(JdbcUserDetailsManager jdbcUserDetailsManager){
 		PasswordEncoder passwordEncoder=passwordEncoder();
 		return args -> {
@@ -49,6 +51,25 @@ public class HopitalApplication  implements CommandLineRunner {
 			if(u3==null)
 			jdbcUserDetailsManager.createUser(
 					User.withUsername("admin2").password(passwordEncoder.encode("1234")).roles("USER","ADMIN").build());
+		};
+	}
+	@Bean
+	CommandLineRunner commandLineRunnerUserDetails(AccountService accountService){
+		return args -> {
+
+
+			accountService.addNewRole("USER");
+			accountService.addNewRole("ADMIN");
+
+			accountService.addNewUser("user4","1234","user4@gmail.com","1234");
+			accountService.addNewUser("amine","1234","amine@gmail.com","1234");
+			accountService.addNewUser("admin","1234","admin@gmail.com","1234");
+			accountService.addRoleToUser("user4","USER");
+			accountService.addRoleToUser("admin","USER");
+			accountService.addRoleToUser("amine","USER");
+			accountService.addRoleToUser("admin","ADMIN");
+
+
 		};
 	}
  @Bean
