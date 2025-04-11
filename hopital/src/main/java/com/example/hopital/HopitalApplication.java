@@ -58,16 +58,16 @@ public class HopitalApplication  implements CommandLineRunner {
 		return args -> {
 
 
-			accountService.addNewRole("USER");
-			accountService.addNewRole("ADMIN");
+			//accountService.addNewRole("USER");
+			//accountService.addNewRole("ADMIN");
 
-			accountService.addNewUser("user4","1234","user4@gmail.com","1234");
-			accountService.addNewUser("amine","1234","amine@gmail.com","1234");
-			accountService.addNewUser("admin","1234","admin@gmail.com","1234");
-			accountService.addRoleToUser("user4","USER");
-			accountService.addRoleToUser("admin","USER");
-			accountService.addRoleToUser("amine","USER");
-			accountService.addRoleToUser("admin","ADMIN");
+			//accountService.addNewUser("user4","1234","user4@gmail.com","1234");
+			//accountService.addNewUser("amine","1234","amine@gmail.com","1234");
+			//accountService.addNewUser("admin","1234","admin@gmail.com","1234");
+			//accountService.addRoleToUser("user4","USER");
+			//accountService.addRoleToUser("admin","USER");
+			//accountService.addRoleToUser("amine","USER");
+			//accountService.addRoleToUser("admin","ADMIN");
 
 
 		};
